@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DreameHouse.MainPage"
+             BackgroundImageSource="dream_house.png">
+
+    <Grid Padding="20" HorizontalOptions="Center" VerticalOptions="End" WidthRequest="600" RowSpacing="15" ColumnSpacing="10"
+          RowDefinitions="Auto, Auto" ColumnDefinitions="*, *">
+
+        <Entry x:Name="EmailEntry"
+               Grid.Row="0" Grid.Column="0"
+               Placeholder="Email"
+               Keyboard="Email"
+               BackgroundColor="#FFA500"
+               TextColor="White"
+               FontSize="18"
+               HeightRequest="40"/>
+
+        <Entry x:Name="PasswordEntry"
+               Grid.Row="0" Grid.Column="1"
+               Placeholder="Password"
+               IsPassword="True"
+               BackgroundColor="#FFA500"
+               TextColor="White"
+               FontSize="18"
+               HeightRequest="40"/>
+
+        <Button x:Name="CreatePlayerButton"
+                Clicked="OnCreatePlayerClicked"
+                Grid.Row="1" Grid.Column="0"
+                Text="Начать строительство"
+                BackgroundColor="#32CD32"
+                TextColor="White"
+                FontAttributes="Bold"
+                FontSize="18"
+                CornerRadius="15"
+                HeightRequest="45"
+                WidthRequest="280"/>
+
+        <Button x:Name="GetPlayerButton"
+                Clicked="OnGetPlayerClicked"
+                Grid.Row="1" Grid.Column="1"
+                Text="Продолжить строительство"
+                BackgroundColor="#32CD32"
+                TextColor="White"
+                FontAttributes="Bold"
+                FontSize="18"
+                CornerRadius="15"
+                HeightRequest="45"
+                WidthRequest="280"/>
+
+    </Grid>
+</ContentPage>

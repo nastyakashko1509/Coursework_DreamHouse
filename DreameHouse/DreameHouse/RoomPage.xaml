@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DreameHouse.RoomPage"
+             BackgroundColor="#A5D6A7">
+
+    <AbsoluteLayout>
+
+        <StackLayout Orientation="Vertical"
+                     BackgroundColor="#A5D6A7" Padding="10"
+                     AbsoluteLayout.LayoutBounds="1,0,150,AutoSize"
+                     AbsoluteLayout.LayoutFlags="PositionProportional"
+                     Spacing="10">
+            <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
+                <Image Source="level.png" WidthRequest="100" HeightRequest="40" />
+                <Label x:Name="LevelLabel"
+                       Text="1"
+                       TextColor="#1B5E20"
+                       FontAttributes="Bold"
+                       FontSize="30"
+                       VerticalTextAlignment="Center"/>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
+                <Image Source="bitcoin.png" WidthRequest="24" HeightRequest="24" />
+                <Label x:Name="BitcoinLabel"
+                       Text="0"
+                       TextColor="#1B5E20"
+                       FontAttributes="Bold"
+                       FontSize="30"
+                       VerticalTextAlignment="Center"/>
+            </HorizontalStackLayout>
+        </StackLayout>
+
+        <Grid AbsoluteLayout.LayoutBounds="0,0.5,AutoSize,AutoSize"
+              AbsoluteLayout.LayoutFlags="PositionProportional"
+              ColumnDefinitions="Auto,*"
+              RowDefinitions="Auto,Auto">
+            
+            <CollectionView x:Name="TasksCollection"
+                            SelectionMode="Single"
+                            Grid.Column="0"
+                            Grid.Row="0"
+                            BackgroundColor="#A5D6A7"
+                            WidthRequest="220"
+                            HorizontalOptions="Start"
+                            HeightRequest="400"
+                            Margin="0">
+                <CollectionView.Header>
+                    <Label Text="Список заданий:"
+                           FontSize="22"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center"
+                           Margin="0,0,0,10"
+                           TextColor="#1B5E20"/>
+                </CollectionView.Header>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BorderColor="#1B5E20"
+                               BackgroundColor="#FFE0B2"
+                               CornerRadius="10"
+                               Margin="4" Padding="8">
+                            <Label Text="{Binding}"
+                                   FontSize="17"
+                                   TextColor="#3E2723" />
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Frame x:Name="RoomImageFrame"
+                   Grid.Column="1"
+                   Grid.Row="0"
+                   CornerRadius="20"
+                   HasShadow="True"
+                   Padding="0"
+                   BackgroundColor="Transparent"
+                   HorizontalOptions="Fill"
+                   VerticalOptions="Center"
+                   Margin="60,0,0,10"
+                   HeightRequest="400">
+                <Image Source="kitchen_0.png"
+                       Aspect="AspectFill"
+                       HeightRequest="400"
+                       WidthRequest="600" />
+            </Frame>
+
+            <Button Text="Выполнить задание"
+                    Grid.Column="0"
+                    Grid.Row="1"
+                    BackgroundColor="#388E3C"
+                    TextColor="White"
+                    FontSize="18"
+                    CornerRadius="12"
+                    HorizontalOptions="Center"
+                    WidthRequest="220"
+                    Clicked="OnExecuteTaskClicked"/>
+            
+            <Button Text="Играть"
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    BackgroundColor="#388E3C"
+                    TextColor="White"
+                    FontSize="18"
+                    CornerRadius="12"
+                    HorizontalOptions="Center"
+                    WidthRequest="220"
+                    Clicked="OnPlayClicked"/>
+        </Grid>
+    </AbsoluteLayout>
+</ContentPage>

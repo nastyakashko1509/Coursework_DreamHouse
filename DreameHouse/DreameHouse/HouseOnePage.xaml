@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DreameHouse.HouseOnePage"
+             BackgroundImageSource="house_one.png">
+
+    <AbsoluteLayout>
+        <Button x:Name="Bedroom"
+                Clicked="OnClickedTransitionToTheBedroom"
+                Text="👣"
+                BackgroundColor="SaddleBrown"
+                FontAttributes="Bold"
+                FontSize="25"
+                CornerRadius="30"
+                HeightRequest="60"
+                WidthRequest="60"
+                AbsoluteLayout.LayoutBounds="100, 200, 65, 45"/>
+
+        <Button x:Name="Bath"
+                Clicked="OnClickedTransitionToTheBath"
+                Text="👣"
+                BackgroundColor="SaddleBrown"
+                FontAttributes="Bold"
+                FontSize="25"
+                CornerRadius="30"
+                HeightRequest="60"
+                WidthRequest="60"
+                AbsoluteLayout.LayoutBounds="100, 430, 65, 45"/>
+
+        <Button x:Name="Kitchen"
+                Clicked="OnClickedTransitionToTheKitchen"
+                Text="👣"
+                BackgroundColor="SaddleBrown"
+                FontAttributes="Bold"
+                FontSize="25"
+                CornerRadius="30"
+                HeightRequest="60"
+                WidthRequest="60"
+                AbsoluteLayout.LayoutBounds="600, 200, 65, 45"/>
+
+        <Button x:Name="Hall"
+                Clicked="OnClickedTransitionToTheHall"
+                Text="👣"
+                BackgroundColor="SaddleBrown"
+                FontAttributes="Bold"
+                FontSize="25"
+                CornerRadius="30"
+                HeightRequest="60"
+                WidthRequest="60"
+                AbsoluteLayout.LayoutBounds="600, 430, 65, 45"/>
+    </AbsoluteLayout>
+</ContentPage>

@@ -1,0 +1,110 @@
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+build/
+bld/
+[Bb]in/
+[Oo]bj/
+
+# MAUI specific build folders
+platforms/
+**/Platforms/*/obj/
+**/Platforms/*/bin/
+
+# User-specific files
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+
+# Mono Auto Generated Files
+mono_crash.*
+
+# Xamarin / MAUI
+*.apk
+*.ap_
+*.aab
+*.ipa
+*.app
+*.xcarchive
+*.xcuserstate
+*.db
+*.db-shm
+*.db-wal
+*.lock.json
+*.nuget.props
+*.nuget.targets
+
+# Visual Studio working folder
+.vs/
+.vscode/
+
+# Rider
+.idea/
+*.sln.iml
+
+# Mac-specific files
+.DS_Store
+
+# Windows thumbnail cache
+Thumbs.db
+
+# JetBrains Rider cache
+.idea/
+*.sln.iml
+
+# Packages folder used by NuGet
+packages/
+# Uncomment if necessary
+# !packages/build/
+
+# Backup & report files from converting an old project file
+*_i.c
+*_p.c
+*.ilk
+*.meta
+*.obj
+*.iobj
+*.pch
+*.pdb
+*.ipdb
+*.pgc
+*.pgd
+*.rsp
+*.sbr
+*.tlh
+*.tli
+*.tmp
+*.tmp_proj
+*.log
+*.tlog
+*.vspscc
+*_i.asm
+*_p.asm
+*.cache
+*.scc
+
+# MAUI device-specific files
+DeviceTests/bin/
+DeviceTests/obj/
+
+# Local NuGet packages
+*.nupkg
+*.snupkg
+.nuget/
+
+# Test results
+TestResults/
+
+# Auto-generated files
+Generated_Code/
+
+# dotnet user secrets
+secrets.json
+
+# OS-specific files
+ehthumbs.db
+Icon?
+Desktop.ini

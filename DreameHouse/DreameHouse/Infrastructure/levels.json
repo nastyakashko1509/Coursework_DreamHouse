@@ -1,0 +1,37 @@
+[
+  {
+    "Number": 1,
+    "RewardBitcoin": 1,
+    "MaxMoves": 30,
+    "TargetType": "CAT",
+    "TargetCount": 15
+  },
+  {
+    "Number": 2,
+    "RewardBitcoin": 1,
+    "MaxMoves": 30,
+    "TargetType": "MUG",
+    "TargetCount": 10
+  },
+  {
+    "Number": 3,
+    "RewardBitcoin": 1,
+    "MaxMoves": 25,
+    "TargetType": "PILLOW",
+    "TargetCount": 15
+  },
+  {
+    "Number": 4,
+    "RewardBitcoin": 1,
+    "MaxMoves": 10,
+    "TargetType": "ROCKET",
+    "TargetCount": 1
+  },
+  {
+    "Number": 5,
+    "RewardBitcoin": 1,
+    "MaxMoves": 25,
+    "TargetType": "BOMB",
+    "TargetCount": 3
+  }
+]

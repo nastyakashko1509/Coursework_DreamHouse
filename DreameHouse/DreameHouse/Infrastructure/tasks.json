@@ -1,0 +1,92 @@
+[
+  {
+    "Id": 1,
+    "Description": "Поставить стол с полками",
+    "Reward": "kitchen_0.png",
+    "PriceBitcoin": 1
+  },
+  {
+    "Id": 2,
+    "Description": "Поставить плиту",
+    "Reward": "kitchen_1.png",
+    "PriceBitcoin": 1
+  },
+  {
+    "Id": 3,
+    "Description": "Поставить микроволновую печь",
+    "Reward": "kitchen_2.png",
+    "PriceBitcoin": 1
+  },
+  {
+    "Id": 4,
+    "Description": "Поставить цветок",
+    "Reward": "kitchen_3.png",
+    "PriceBitcoin": 1
+  },
+  {
+    "Id": 5,
+    "Description": "Поставить кружку",
+    "Reward": "kitchen_4.png",
+    "PriceBitcoin": 1
+  },
+  {
+    "Id": 6,
+    "Description": "Поставить раковину с краном",
+    "Reward": "kitchen_5.png",
+    "PriceBitcoin": 1
+  },
+  {
+    "Id": 7,
+    "Description": "Поставить вытяжку",
+    "Reward": "kitchen_6.png",
+    "PriceBitcoin": 1
+  },
+  {
+    "Id": 8,
+    "Description": "Поставить холодильник",
+    "Reward": "kitchen_7.png",
+    "PriceBitcoin": 1
+  },
+  {
+    "Id": 9,
+    "Description": "Поставить стуль",
+    "Reward": "kitchen_8.png",
+    "PriceBitcoin": 1
+  },
+  {
+    "Id": 10,
+    "Description": "Поставить второй стул",
+    "Reward": "kitchen_9.png",
+    "PriceBitcoin": 1
+  },
+  {
+    "Id": 11,
+    "Description": "Положить подушки на стулья",
+    "Reward": "kitchen_10.png",
+    "PriceBitcoin": 1
+  },
+  {
+    "Id": 12,
+    "Description": "Повесить венок на дверь",
+    "Reward": "kitchen_11.png",
+    "PriceBitcoin": 1
+  },
+  {
+    "Id": 13,
+    "Description": "Поставить стол",
+    "Reward": "kitchen_12.png",
+    "PriceBitcoin": 1
+  },
+  {
+    "Id": 14,
+    "Description": "Накрыть на стол",
+    "Reward": "kitchen_13.png",
+    "PriceBitcoin": 1
+  },
+  {
+    "Id": 15,
+    "Description": "Отпраздновать завершение ремонта кухни",
+    "Reward": "kitchen_14.png",
+    "PriceBitcoin": 1
+  }
+]
