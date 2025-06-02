@@ -25,14 +25,17 @@ public partial class HouseOnePage : ContentPage, IQueryAttributable
 
     private async void OnClickedTransitionToTheBedroom(object sender, EventArgs e)
     {
+        await Shell.Current.GoToAsync($"/room?id={Id}");
     }
 
     private async void OnClickedTransitionToTheBath(object sender, EventArgs e)
     {
+        await Shell.Current.GoToAsync($"/room?id={Id}");
     }
 
     private async void OnClickedTransitionToTheHall(object sender, EventArgs e)
     {
+        await Shell.Current.GoToAsync($"/room?id={Id}");
     }
 
     public void ApplyQueryAttributes(IDictionary<string, object> query)
@@ -52,10 +55,24 @@ public partial class HouseOnePage : ContentPage, IQueryAttributable
             var player = await _playerService.GetPlayerByIdAsync(playerId);
             if (player != null)
             {
-                if (player.level < 16)
+                if (player.task < 17)
                 {
                     Bath.IsEnabled = false;
                     Bath.Text = "🔒";
+
+                    Hall.IsEnabled = false;
+                    Hall.Text = "🔒";
+
+                    Bedroom.IsEnabled = false;
+                    Bedroom.Text = "🔒";
+                }
+                else if (player.task > 17 && player.task < 29)
+                {
+                    if (Kitchen.Parent is AbsoluteLayout parent)
+                    {
+                        parent.Children.Remove(Kitchen); 
+                    }
+                    this.BackgroundImageSource = "house_one_1.png";
 
                     Hall.IsEnabled = false;
                     Hall.Text = "🔒";

@@ -438,7 +438,12 @@ public class Match3BoardService
             }
         }
 
-        if (Level != null && targetType == Level.TargetType)
+        if (Level != null && Level.TargetType == TileType.HOME)
+        {
+            TargetProgress++; 
+        }
+
+        else if (Level != null && targetType == Level.TargetType)
         {
             TargetProgress += targetCleared;
         }

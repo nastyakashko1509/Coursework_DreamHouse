@@ -3,6 +3,7 @@ using DreameHouse.Infrastructure.Repositories;
 using DreameHouse.Infrastructure;
 using DreameHouse.Domain.Entities;
 using System.Collections.ObjectModel;
+using Microsoft.UI.Xaml.Documents;
 
 namespace DreameHouse;
 
@@ -113,11 +114,33 @@ public partial class RoomPage : ContentPage, IQueryAttributable
         }
     }
 
+    private async void OnMainClicked(object sender, EventArgs e)
+    {
+        if (player != null)
+        {
+            await Shell.Current.GoToAsync($"/house_one?id={Id}");
+        }
+    }
+
     private async void OnPlayClicked(object sender, EventArgs e)
     {
         if (player != null)
         {
-            await Shell.Current.GoToAsync($"/match3board?level={player.level}&id={player.Id}");
+            if (player.level < 14)
+            {
+                if (player.level % 5 == 0)
+                {
+                    await Shell.Current.GoToAsync($"/maze?level={player.level}&id={player.Id}");
+                }
+                else
+                {
+                    await Shell.Current.GoToAsync($"/match3board?level={player.level}&id={player.Id}");
+                }
+            }
+            else
+            {
+                await DisplayAlert("Нет новых уровней", "Все существующие уровни пройдены! Ждите обновлений!", "OK");
+            }
         }
     }
 }

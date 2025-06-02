@@ -12,7 +12,7 @@
                      AbsoluteLayout.LayoutFlags="PositionProportional"
                      Spacing="10">
             <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
-                <Image Source="level.png" WidthRequest="100" HeightRequest="40" />
+                <Image Source="level.png" WidthRequest="80" HeightRequest="40" />
                 <Label x:Name="LevelLabel"
                        Text="1"
                        TextColor="#1B5E20"
@@ -34,7 +34,7 @@
 
         <Grid AbsoluteLayout.LayoutBounds="0,0.5,AutoSize,AutoSize"
               AbsoluteLayout.LayoutFlags="PositionProportional"
-              ColumnDefinitions="Auto,*"
+              ColumnDefinitions="Auto,*, *"
               RowDefinitions="Auto,Auto">
             
             <CollectionView x:Name="TasksCollection"
@@ -106,6 +106,17 @@
                     HorizontalOptions="Center"
                     WidthRequest="220"
                     Clicked="OnPlayClicked"/>
+
+            <Button Text="На главную"
+                    Grid.Column="2"
+                    Grid.Row="1"
+                    BackgroundColor="#388E3C"
+                    TextColor="White"
+                    FontSize="18"
+                    CornerRadius="12"
+                    HorizontalOptions="Center"
+                    WidthRequest="220"
+                    Clicked="OnMainClicked"/>
         </Grid>
     </AbsoluteLayout>
 </ContentPage>

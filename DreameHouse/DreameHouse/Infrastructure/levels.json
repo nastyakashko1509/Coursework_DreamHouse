@@ -33,5 +33,75 @@
     "MaxMoves": 25,
     "TargetType": "BOMB",
     "TargetCount": 3
+  },
+  {
+    "Number": 6,
+    "RewardBitcoin": 1,
+    "MaxMoves": 25,
+    "TargetType": "BOMB",
+    "TargetCount": 3
+  },
+  {
+    "Number": 7,
+    "RewardBitcoin": 1,
+    "MaxMoves": 25,
+    "TargetType": "FLOWER",
+    "TargetCount": 15
+  },
+  {
+    "Number": 8,
+    "RewardBitcoin": 2,
+    "MaxMoves": 15,
+    "TargetType": "HOME",
+    "TargetCount": 1
+  },
+  {
+    "Number": 9,
+    "RewardBitcoin": 1,
+    "MaxMoves": 20,
+    "TargetType": "BRICK",
+    "TargetCount": 10
+  },
+  {
+    "Number": 10,
+    "RewardBitcoin": 1,
+    "MaxMoves": 20,
+    "TargetType": "LAMP",
+    "TargetCount": 10
+  },
+  {
+    "Number": 11,
+    "RewardBitcoin": 1,
+    "MaxMoves": 20,
+    "TargetType": "LAMP",
+    "TargetCount": 10
+  },
+  {
+    "Number": 12,
+    "RewardBitcoin": 2,
+    "MaxMoves": 20,
+    "TargetType": "BOMB",
+    "TargetCount": 5
+  },
+  {
+    "Number": 13,
+    "RewardBitcoin": 2,
+    "MaxMoves": 30,
+    "TargetType": "WREATH",
+    "TargetCount": 15
+  },
+  {
+    "Number": 14,
+    "RewardBitcoin": 2,
+    "MaxMoves": 15,
+    "TargetType": "MUG",
+    "TargetCount": 10
+  },
+  {
+    "Number": 15,
+    "RewardBitcoin": 1,
+    "MaxMoves": 10,
+    "TargetType": "PILLOW",
+    "TargetCount": 5
   }
 ]

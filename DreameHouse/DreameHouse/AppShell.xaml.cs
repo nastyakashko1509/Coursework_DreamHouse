@@ -12,6 +12,7 @@ namespace DreameHouse
             Routing.RegisterRoute("map", typeof(MapPage));
             Routing.RegisterRoute("room", typeof(RoomPage));
             Routing.RegisterRoute("match3board", typeof(Match3BoardPage));
+            Routing.RegisterRoute("maze", typeof(MazePage));
         }
     }
 }
