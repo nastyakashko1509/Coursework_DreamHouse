@@ -66,7 +66,7 @@ public partial class HouseOnePage : ContentPage, IQueryAttributable
                     Bedroom.IsEnabled = false;
                     Bedroom.Text = "🔒";
                 }
-                else if (player.task > 17 && player.task < 29)
+                else if (player.task > 16 && player.task < 28)
                 {
                     if (Kitchen.Parent is AbsoluteLayout parent)
                     {
@@ -79,6 +79,28 @@ public partial class HouseOnePage : ContentPage, IQueryAttributable
 
                     Bedroom.IsEnabled = false;
                     Bedroom.Text = "🔒";
+                }
+                else if (player.task > 27 && player.task < 36)
+                {
+                    if (Kitchen.Parent is AbsoluteLayout parent_1 && Bath.Parent is AbsoluteLayout parent_2)
+                    {
+                        parent_1.Children.Remove(Kitchen);
+                        parent_2.Children.Remove(Bath);
+                    }
+                    this.BackgroundImageSource = "house_one_2.png";
+
+                    Hall.IsEnabled = false;
+                    Hall.Text = "🔒";
+                }
+                else
+                {
+                    if (Kitchen.Parent is AbsoluteLayout parent_1 && Bath.Parent is AbsoluteLayout parent_2 && Bedroom.Parent is AbsoluteLayout parent_3)
+                    {
+                        parent_1.Children.Remove(Kitchen);
+                        parent_2.Children.Remove(Bath);
+                        parent_3.Children.Remove(Bedroom);
+                    }
+                    this.BackgroundImageSource = "house_one_3.png";
                 }
             }
         }

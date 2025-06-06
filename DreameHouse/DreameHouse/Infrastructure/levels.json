@@ -103,5 +103,250 @@
     "MaxMoves": 10,
     "TargetType": "PILLOW",
     "TargetCount": 5
+  },
+  {
+    "Number": 16,
+    "RewardBitcoin": 1,
+    "MaxMoves": 25,
+    "TargetType": "CAT",
+    "TargetCount": 20
+  },
+  {
+    "Number": 17,
+    "RewardBitcoin": 1,
+    "MaxMoves": 20,
+    "TargetType": "MUG",
+    "TargetCount": 15
+  },
+  {
+    "Number": 18,
+    "RewardBitcoin": 2,
+    "MaxMoves": 15,
+    "TargetType": "ROCKET",
+    "TargetCount": 2
+  },
+  {
+    "Number": 19,
+    "RewardBitcoin": 1,
+    "MaxMoves": 30,
+    "TargetType": "FLOWER",
+    "TargetCount": 20
+  },
+  {
+    "Number": 20,
+    "RewardBitcoin": 2,
+    "MaxMoves": 20,
+    "TargetType": "BOMB",
+    "TargetCount": 5
+  },
+  {
+    "Number": 21,
+    "RewardBitcoin": 1,
+    "MaxMoves": 25,
+    "TargetType": "PILLOW",
+    "TargetCount": 20
+  },
+  {
+    "Number": 22,
+    "RewardBitcoin": 2,
+    "MaxMoves": 15,
+    "TargetType": "HOME",
+    "TargetCount": 2
+  },
+  {
+    "Number": 23,
+    "RewardBitcoin": 1,
+    "MaxMoves": 35,
+    "TargetType": "BRICK",
+    "TargetCount": 25
+  },
+  {
+    "Number": 24,
+    "RewardBitcoin": 1,
+    "MaxMoves": 25,
+    "TargetType": "LAMP",
+    "TargetCount": 15
+  },
+  {
+    "Number": 25,
+    "RewardBitcoin": 3,
+    "MaxMoves": 10,
+    "TargetType": "ROCKET",
+    "TargetCount": 3
+  },
+  {
+    "Number": 26,
+    "RewardBitcoin": 2,
+    "MaxMoves": 30,
+    "TargetType": "WREATH",
+    "TargetCount": 20
+  },
+  {
+    "Number": 27,
+    "RewardBitcoin": 1,
+    "MaxMoves": 20,
+    "TargetType": "MUG",
+    "TargetCount": 20
+  },
+  {
+    "Number": 28,
+    "RewardBitcoin": 2,
+    "MaxMoves": 15,
+    "TargetType": "BOMB",
+    "TargetCount": 5
+  },
+  {
+    "Number": 29,
+    "RewardBitcoin": 1,
+    "MaxMoves": 40,
+    "TargetType": "CAT",
+    "TargetCount": 30
+  },
+  {
+    "Number": 30,
+    "RewardBitcoin": 3,
+    "MaxMoves": 12,
+    "TargetType": "HOME",
+    "TargetCount": 2
+  },
+  {
+    "Number": 31,
+    "RewardBitcoin": 2,
+    "MaxMoves": 25,
+    "TargetType": "FLOWER",
+    "TargetCount": 20
+  },
+  {
+    "Number": 32,
+    "RewardBitcoin": 1,
+    "MaxMoves": 35,
+    "TargetType": "PILLOW",
+    "TargetCount": 10
+  },
+  {
+    "Number": 33,
+    "RewardBitcoin": 2,
+    "MaxMoves": 20,
+    "TargetType": "LAMP",
+    "TargetCount": 15
+  },
+  {
+    "Number": 34,
+    "RewardBitcoin": 3,
+    "MaxMoves": 15,
+    "TargetType": "ROCKET",
+    "TargetCount": 3
+  },
+  {
+    "Number": 35,
+    "RewardBitcoin": 2,
+    "MaxMoves": 30,
+    "TargetType": "BRICK",
+    "TargetCount": 25
+  },
+  {
+    "Number": 36,
+    "RewardBitcoin": 3,
+    "MaxMoves": 18,
+    "TargetType": "BOMB",
+    "TargetCount": 10
+  },
+  {
+    "Number": 37,
+    "RewardBitcoin": 2,
+    "MaxMoves": 25,
+    "TargetType": "WREATH",
+    "TargetCount": 25
+  },
+  {
+    "Number": 38,
+    "RewardBitcoin": 1,
+    "MaxMoves": 45,
+    "TargetType": "CAT",
+    "TargetCount": 40
+  },
+  {
+    "Number": 39,
+    "RewardBitcoin": 3,
+    "MaxMoves": 20,
+    "TargetType": "HOME",
+    "TargetCount": 4
+  },
+  {
+    "Number": 40,
+    "RewardBitcoin": 2,
+    "MaxMoves": 35,
+    "TargetType": "MUG",
+    "TargetCount": 30
+  },
+  {
+    "Number": 41,
+    "RewardBitcoin": 3,
+    "MaxMoves": 15,
+    "TargetType": "ROCKET",
+    "TargetCount": 5
+  },
+  {
+    "Number": 42,
+    "RewardBitcoin": 2,
+    "MaxMoves": 40,
+    "TargetType": "FLOWER",
+    "TargetCount": 35
+  },
+  {
+    "Number": 43,
+    "RewardBitcoin": 1,
+    "MaxMoves": 30,
+    "TargetType": "PILLOW",
+    "TargetCount": 35
+  },
+  {
+    "Number": 44,
+    "RewardBitcoin": 3,
+    "MaxMoves": 25,
+    "TargetType": "BOMB",
+    "TargetCount": 15
+  },
+  {
+    "Number": 45,
+    "RewardBitcoin": 2,
+    "MaxMoves": 50,
+    "TargetType": "CAT",
+    "TargetCount": 50
+  },
+  {
+    "Number": 46,
+    "RewardBitcoin": 4,
+    "MaxMoves": 10,
+    "TargetType": "HOME",
+    "TargetCount": 5
+  },
+  {
+    "Number": 47,
+    "RewardBitcoin": 2,
+    "MaxMoves": 35,
+    "TargetType": "LAMP",
+    "TargetCount": 30
+  },
+  {
+    "Number": 48,
+    "RewardBitcoin": 3,
+    "MaxMoves": 20,
+    "TargetType": "ROCKET",
+    "TargetCount": 6
+  },
+  {
+    "Number": 49,
+    "RewardBitcoin": 2,
+    "MaxMoves": 45,
+    "TargetType": "WREATH",
+    "TargetCount": 40
+  },
+  {
+    "Number": 50,
+    "RewardBitcoin": 5,
+    "MaxMoves": 15,
+    "TargetType": "BOMB",
+    "TargetCount": 20
   }
 ]

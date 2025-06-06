@@ -1,7 +1,6 @@
 ﻿using DreameHouse.Domain.Abstarctions;
 using DreameHouse.Domain.Entities;
 using SQLite;
-using System.Threading.Tasks;
 
 namespace DreameHouse.Infrastructure.Repositories
 {

@@ -34,21 +34,26 @@ namespace DreameHouse.Infrastructure
             }
 
             var json = await File.ReadAllTextAsync(path);
-
             var jsonTasks = JsonDeserializer.Deserialize<Tasks>(json);
 
-            var dbTasks = await _database.Table<Tasks>().ToListAsync();
+            // Получаем все задачи из БД (для оптимизации можно взять только Id)
+            var dbTaskIds = (await _database.Table<Tasks>().ToListAsync())
+                .Select(t => t.Id)
+                .ToHashSet(); // Используем HashSet для быстрого поиска
 
             foreach (var jsonTask in jsonTasks)
             {
-                var existing = dbTasks.FirstOrDefault(t => t.Id == jsonTask.Id);
-                if (existing == null)
+                // Если задачи с таким Id нет в БД — добавляем
+                if (!dbTaskIds.Contains(jsonTask.Id))
                 {
-                    await _database.InsertAsync(jsonTask); 
+                    await _database.InsertAsync(jsonTask);
                 }
-                else if (!AreTasksEqual(existing, jsonTask))
+                // Если есть — проверяем, изменились ли данные (опционально)
+                else if (!AreTasksEqual(
+                    await _database.Table<Tasks>().FirstOrDefaultAsync(t => t.Id == jsonTask.Id),
+                    jsonTask))
                 {
-                    await _database.UpdateAsync(jsonTask); 
+                    await _database.UpdateAsync(jsonTask);
                 }
             }
         }

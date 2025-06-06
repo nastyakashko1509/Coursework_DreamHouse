@@ -23,7 +23,7 @@ namespace DreameHouse.Infrastructure.Repositories
             return await _database.FindAsync<Player>(id);
         }
 
-        public async Task UpdateAsync(Player item) 
+        public async Task UpdateAsync(Player item)
         {
             await _database.UpdateAsync(item);
         }

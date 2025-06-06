@@ -39,17 +39,27 @@ namespace DreameHouse
 
             if (!_emailValidator.IsValidEmail(email) || !_passwordValidator.IsValidPassword(password))
             {
-                await DisplayAlert("Ошибка", "Введите корректный email или password", "OK");
+                await DisplayAlert("Ошибка", "Введите корректный email или пароль", "OK");
                 return;
             }
 
-            var player = await _playerService.CreatePlayerAsync(email, password);
+            try
+            {
+                var player = await _playerService.CreatePlayerAsync(email, password);
+                await DisplayAlert("Успех", "Игрок создан!", "OK");
+                EmailEntry.Text = "";
+                PasswordEntry.Text = "";
 
-            await DisplayAlert("Успех", "Игрок создан!", "OK");
-            EmailEntry.Text = "";
-            PasswordEntry.Text = "";
-
-            await Shell.Current.GoToAsync($"/map?id={player.Id}");
+                await Shell.Current.GoToAsync($"/map?id={player.Id}");
+            }
+            catch (InvalidOperationException ex)
+            {
+                await DisplayAlert("Ошибка", ex.Message, "OK");
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Ошибка", "Не удалось создать игрока", "OK");
+            }
         }
 
         private async void OnGetPlayerClicked(object sender, EventArgs e)

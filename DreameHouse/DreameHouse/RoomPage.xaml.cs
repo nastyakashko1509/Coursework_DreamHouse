@@ -3,7 +3,6 @@ using DreameHouse.Infrastructure.Repositories;
 using DreameHouse.Infrastructure;
 using DreameHouse.Domain.Entities;
 using System.Collections.ObjectModel;
-using Microsoft.UI.Xaml.Documents;
 
 namespace DreameHouse;
 
@@ -20,6 +19,7 @@ public partial class RoomPage : ContentPage, IQueryAttributable
         InitializeComponent();
 
         var dbContext = new DatabaseContext();
+
         var playerRepository = new PlayerRepository(dbContext.GetDatabase());
         var taskRepository = new TasksRepository(dbContext);
 
@@ -40,6 +40,8 @@ public partial class RoomPage : ContentPage, IQueryAttributable
     protected override async void OnAppearing()
     {
         base.OnAppearing();
+        Shell.SetBackButtonBehavior(this, new BackButtonBehavior { IsEnabled = false, IsVisible = false });
+
         if (int.TryParse(Id, out int playerId))
         {
             player = await _playerService.GetPlayerByIdAsync(playerId);
@@ -126,7 +128,7 @@ public partial class RoomPage : ContentPage, IQueryAttributable
     {
         if (player != null)
         {
-            if (player.level < 14)
+            if (player.level < 51)
             {
                 if (player.level % 5 == 0)
                 {

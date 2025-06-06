@@ -2,6 +2,7 @@
 using DreameHouse.Domain.Entities;
 using DreameHouse.Infrastructure;
 using DreameHouse.Infrastructure.Repositories;
+using LiteDB;
 using Microsoft.UI.Xaml.Documents;
 
 namespace DreameHouse;
@@ -25,13 +26,18 @@ public partial class MazePage : ContentPage, IQueryAttributable
         InitializeComponent();
 
         var dbContext = new DatabaseContext();
+        var playerRepository = new PlayerRepository(dbContext.GetDatabase());
+        _playerService = new PlayerService(playerRepository);
 
         _levelService = new LevelService();
 
-        _playerRepository = new PlayerRepository(dbContext.GetDatabase());
-        _playerService = new PlayerService(_playerRepository);
-
         BuildMaze();
+    }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        Shell.SetBackButtonBehavior(this, new BackButtonBehavior { IsEnabled = false, IsVisible = false });
     }
 
     public void ApplyQueryAttributes(IDictionary<string, object> query)
@@ -53,9 +59,14 @@ public partial class MazePage : ContentPage, IQueryAttributable
 
     private void BuildMaze()
     {
-        MazeGrid.Children.Clear();
-        MazeGrid.ColumnDefinitions.Clear();
-        MazeGrid.RowDefinitions.Clear();
+        var elementsToRemove = MazeGrid.Children
+            .Where(c => !(c is Label))
+            .ToList();
+
+        foreach (var element in elementsToRemove)
+        {
+            MazeGrid.Children.Remove(element);
+        }
 
         for (int i = 0; i < MazeSize; i++)
         {
@@ -83,6 +94,54 @@ public partial class MazePage : ContentPage, IQueryAttributable
 
         DrawPlayer();
         DrawExit();
+        UpdateStepDisplay();
+    }
+
+    private void MovePlayerAndCheck(int deltaX, int deltaY)
+    {
+        if (_mazeService.IsGameOver)
+        {
+            DisplayAlert("Игра окончена", "Вы проиграли! Начнём заново?", "OK");
+            ResetGame();
+            return;
+        }
+
+        if (_mazeService.StepsRemaining <= 0)
+        {
+            WinLabel.Text = "Проигрыш! 💀";
+            DisplayAlert("Увы!", $"Вы исчерпали лимит шагов! Минимальное количество: {_mazeService.MinStepsRequired}", "OK");
+            ResetGame();
+            return;
+        }
+
+        if (_mazeService.MovePlayer(deltaX, deltaY))
+        {
+            _mazeService.DecrementSteps();
+
+            UpdatePlayerPosition();
+            UpdateStepDisplay();
+
+            CheckGameStatus();
+        }
+    }
+
+    private void UpdateStepDisplay()
+    {
+        Device.BeginInvokeOnMainThread(() =>
+        {
+            WinLabel.Text = $"Осталось шагов: {_mazeService.StepsRemaining}";
+        });
+    }
+
+    private void UpdatePlayerPosition()
+    {
+        var oldPlayer = MazeGrid.Children.FirstOrDefault(c => c is Image);
+        if (oldPlayer != null)
+        {
+            MazeGrid.Children.Remove(oldPlayer);
+        }
+
+        DrawPlayer();
     }
 
     private bool IsBorder(int x, int y)
@@ -116,31 +175,18 @@ public partial class MazePage : ContentPage, IQueryAttributable
         MazeGrid.Add(exitView, exit.X, exit.Y);
     }
 
-    private void MovePlayerAndCheck(int deltaX, int deltaY)
-    {
-        if (_mazeService.IsGameOver)
-        {
-            DisplayAlert("Игра окончена", "Вы проиграли! Начнём заново?", "OK");
-            ResetGame();
-            return;
-        }
-
-        if (_mazeService.MovePlayer(deltaX, deltaY))
-        {
-            BuildMaze();
-            CheckGameStatus();
-        }
-    }
-
     private async void CheckGameStatus()
     {
         if (_mazeService.CheckWin())
         {
-            WinLabel.Text = "Победа! 🎉";
-            DisplayAlert("Поздравляем!", "Вы прошли лабиринт!", "OK");
-            ResetGame();
+            string message = _mazeService.StepsRemaining >= 0
+                ? "Поздравляем! Вы прошли лабиринт!"
+                : "Вы прошли лабиринт, но превысили минимальное количество шагов!";
 
-            if (int.TryParse(Id, out int playerId))
+            WinLabel.Text = "Победа! 🎉";
+            await DisplayAlert("Поздравляем!", message, "OK");
+
+            if (int.TryParse(Id, out int playerId) && _mazeService.StepsRemaining >= 0)
             {
                 int nextLevel = _currentLevel.Number + 1;
                 await _playerService.UpdatePlayerBitcoinAsync(playerId, 1);
@@ -149,10 +195,10 @@ public partial class MazePage : ContentPage, IQueryAttributable
 
             await Shell.Current.GoToAsync($"/room?id={Id}");
         }
-        else if (_mazeService.IsGameOver)
+        else if (_mazeService.StepsRemaining <= 0)
         {
             WinLabel.Text = "Проигрыш! 💀";
-            DisplayAlert("Увы!", "Вы попали в ловушку!", "OK");
+            await DisplayAlert("Увы!", $"Вы исчерпали лимит шагов! Минимальное количество: {_mazeService.MinStepsRequired}", "OK");
             ResetGame();
         }
     }
@@ -162,6 +208,26 @@ public partial class MazePage : ContentPage, IQueryAttributable
         _mazeService.Regenerate();
         WinLabel.Text = "";
         BuildMaze();
+    }
+
+    private void OnShowPathClicked(object sender, EventArgs e)
+    {
+        foreach (var view in MazeGrid.Children.Where(v => v is BoxView b && b.BackgroundColor == Color.FromArgb("#880000FF")).ToList())
+        {
+            MazeGrid.Children.Remove(view);
+        }
+
+        foreach (var cell in _mazeService.ShortestPath.Skip(1).Take(_mazeService.ShortestPath.Count - 2))
+        {
+            var pathMarker = new BoxView
+            {
+                BackgroundColor = Color.FromArgb("#880000FF"), 
+                WidthRequest = CellSize - 15,
+                HeightRequest = CellSize - 15,
+                CornerRadius = 5
+            };
+            MazeGrid.Add(pathMarker, cell.X, cell.Y);
+        }
     }
 
     private void OnUpClicked(object sender, EventArgs e) => MovePlayerAndCheck(0, -1);

@@ -8,6 +8,9 @@
         public (int X, int Y) Player { get; set; }
         public (int X, int Y) Exit { get; private set; }
         public bool IsGameOver { get; private set; }
+        public int StepsRemaining { get; set; }
+        public int MinStepsRequired { get; set; }
+        public List<(int X, int Y)> ShortestPath { get; set; } = new List<(int X, int Y)>();
 
         [ThreadStatic]
         private Random _random = new Random();
@@ -41,8 +44,16 @@
                 Walls[Width - 1, y] = true;
             }
 
-            GenerateMazeDFS();
-            AddRandomPaths(10);
+            if (_random.NextDouble() > 0.5)
+            {
+                GenerateMazeDFS();
+            }
+            else
+            {
+                GenerateMazePrim();
+            }
+
+            AddRandomPaths(Width + Height);
 
             Player = (1, 1);
             Exit = (Width - 2, Height - 2);
@@ -50,6 +61,50 @@
             Walls[Exit.X, Exit.Y] = false;
 
             EnsurePathToExit();
+
+            CalculateShortestPath();
+            MinStepsRequired = ShortestPath.Count - 1;
+            StepsRemaining = MinStepsRequired; 
+        }
+
+        private void GenerateMazePrim()
+        {
+            var walls = new List<(int x, int y, int dirX, int dirY)>();
+            var start = (x: _random.Next(1, Width - 1) | 1, y: _random.Next(1, Height - 1) | 1);
+            Walls[start.x, start.y] = false;
+
+            AddWalls(start.x, start.y, walls);
+
+            while (walls.Count > 0)
+            {
+                int randomIndex = _random.Next(walls.Count);
+                var wall = walls[randomIndex];
+                walls.RemoveAt(randomIndex);
+
+                int nx = wall.x + wall.dirX;
+                int ny = wall.y + wall.dirY;
+
+                if (nx > 0 && nx < Width - 1 && ny > 0 && ny < Height - 1 && Walls[nx, ny])
+                {
+                    Walls[wall.x, wall.y] = false;
+                    Walls[nx, ny] = false;
+                    AddWalls(nx, ny, walls);
+                }
+            }
+        }
+
+        private void AddWalls(int x, int y, List<(int x, int y, int dirX, int dirY)> walls)
+        {
+            var directions = new (int dx, int dy)[] { (0, 1), (1, 0), (0, -1), (-1, 0) };
+            foreach (var dir in directions)
+            {
+                int wx = x + dir.dx;
+                int wy = y + dir.dy;
+                if (wx > 0 && wx < Width - 1 && wy > 0 && wy < Height - 1 && Walls[wx, wy])
+                {
+                    walls.Add((wx, wy, dir.dx, dir.dy));
+                }
+            }
         }
 
         private void GenerateMazeDFS()
@@ -82,35 +137,105 @@
 
                 if (neighbors.Count > 0)
                 {
-                    stack.Push(current); 
+                    stack.Push(current);
                     var next = neighbors[_random.Next(neighbors.Count)];
                     var wallX = (current.x + next.x) / 2;
                     var wallY = (current.y + next.y) / 2;
 
-                    Walls[next.x, next.y] = false;
-                    Walls[wallX, wallY] = false;
-                    visited[next.x, next.y] = true;
-                    stack.Push(next);
+                    if (wallX > 0 && wallX < Width - 1 && wallY > 0 && wallY < Height - 1)
+                    {
+                        Walls[next.x, next.y] = false;
+                        Walls[wallX, wallY] = false;
+                        visited[next.x, next.y] = true;
+                        stack.Push(next);
+                    }
                 }
             }
         }
 
-        private void AddRandomPaths(int extraPaths = 5)
+        private void AddRandomPaths(int extraPaths)
         {
             for (int i = 0; i < extraPaths; i++)
             {
                 int x = _random.Next(1, Width - 1);
                 int y = _random.Next(1, Height - 1);
 
+                if (x == 0 || x == Width - 1 || y == 0 || y == Height - 1)
+                    continue;
+
                 if (Walls[x, y])
                 {
                     int freeNeighbors = CountFreeNeighbors(x, y);
-                    if (freeNeighbors >= 2)
+                    if (freeNeighbors >= 1) 
                     {
                         Walls[x, y] = false;
                     }
                 }
+                else if (_random.NextDouble() > 0.7) 
+                {
+                    int freeNeighbors = CountFreeNeighbors(x, y);
+                    if (freeNeighbors <= 2) 
+                    {
+                        Walls[x, y] = true;
+                    }
+                }
             }
+        }
+
+        private void CalculateShortestPath()
+        {
+            var visited = new bool[Width, Height];
+            var queue = new Queue<List<(int X, int Y)>>();
+            var startPath = new List<(int X, int Y)> { Player };
+            queue.Enqueue(startPath);
+
+            var directions = new (int dx, int dy)[] { (0, 1), (1, 0), (0, -1), (-1, 0) };
+
+            while (queue.Count > 0)
+            {
+                var currentPath = queue.Dequeue();
+                var lastCell = currentPath.Last();
+
+                if (lastCell.X == Exit.X && lastCell.Y == Exit.Y)
+                {
+                    ShortestPath = currentPath;
+                    return;
+                }
+
+                foreach (var dir in directions)
+                {
+                    int nx = lastCell.X + dir.dx;
+                    int ny = lastCell.Y + dir.dy;
+
+                    if (nx >= 0 && nx < Width && ny >= 0 && ny < Height &&
+                        !Walls[nx, ny] && !visited[nx, ny])
+                    {
+                        visited[nx, ny] = true;
+                        var newPath = new List<(int X, int Y)>(currentPath);
+                        newPath.Add((nx, ny));
+                        queue.Enqueue(newPath);
+                    }
+                }
+            }
+        }
+
+        public bool MovePlayer(int deltaX, int deltaY)
+        {
+            int newX = Player.X + deltaX;
+            int newY = Player.Y + deltaY;
+
+            if (CanMove(newX, newY))
+            {
+                Player = (newX, newY);
+                StepsRemaining--;
+                return true;
+            }
+            return false;
+        }
+
+        public bool IsOutOfSteps()
+        {
+            return StepsRemaining < 0;
         }
 
         private int CountFreeNeighbors(int x, int y)

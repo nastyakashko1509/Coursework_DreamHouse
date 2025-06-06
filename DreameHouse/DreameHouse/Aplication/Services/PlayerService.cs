@@ -14,6 +14,12 @@ namespace DreameHouse.Aplication.Services
 
         public async Task<Player> CreatePlayerAsync(string email, string password)
         {
+            var existingPlayer = await _playerRepository.FindByEmailAndPasswordAsync(email, password);
+            if (existingPlayer != null)
+            {
+                throw new InvalidOperationException("Игрок с таким email уже существует");
+            }
+
             var newPlayer = new Player
             {
                 email = email,

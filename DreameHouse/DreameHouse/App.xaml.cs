@@ -1,10 +1,13 @@
 ﻿using DreameHouse.Infrastructure;
+using DreameHouse.Infrastructure.Repositories;
+using LiteDB;
 
 namespace DreameHouse
 {
     public partial class App : Application
     {
         public static DatabaseContext DbContext { get; set; }
+
         public App()
         {
             InitializeComponent();

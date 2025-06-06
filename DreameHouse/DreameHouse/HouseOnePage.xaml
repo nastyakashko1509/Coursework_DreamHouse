@@ -14,7 +14,7 @@
                 CornerRadius="30"
                 HeightRequest="60"
                 WidthRequest="60"
-                AbsoluteLayout.LayoutBounds="100, 200, 65, 45"/>
+                AbsoluteLayout.LayoutBounds="100, 430, 65, 45"/>
 
         <Button x:Name="Bath"
                 Clicked="OnClickedTransitionToTheBath"
@@ -47,6 +47,6 @@
                 CornerRadius="30"
                 HeightRequest="60"
                 WidthRequest="60"
-                AbsoluteLayout.LayoutBounds="100, 430, 65, 45"/>
+                AbsoluteLayout.LayoutBounds="100, 200, 65, 45"/>
     </AbsoluteLayout>
 </ContentPage>

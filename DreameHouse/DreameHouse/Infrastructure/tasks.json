@@ -102,63 +102,117 @@
     "PriceBitcoin": 1
   },
   {
-    "Id": 19,
+    "Id": 18,
     "Description": "Повесить держатель для туалетной бумаги",
     "Reward": "bathroom_1.png",
     "PriceBitcoin": 1
   },
   {
-    "Id": 20,
+    "Id": 19,
     "Description": "Положить коврик",
     "Reward": "bathroom_2.png",
     "PriceBitcoin": 1
   },
   {
-    "Id": 21,
+    "Id": 20,
     "Description": "Купить полочку, поставить шампуни на полочку",
     "Reward": "bathroom_3.png",
     "PriceBitcoin": 1
   },
   {
-    "Id": 22,
+    "Id": 21,
     "Description": "Поставить раковину с цветком",
     "Reward": "bathroom_4.png",
     "PriceBitcoin": 2
   },
   {
-    "Id": 23,
+    "Id": 22,
     "Description": "Повесить зеркало",
     "Reward": "bathroom_5.png",
     "PriceBitcoin": 1
   },
   {
-    "Id": 24,
+    "Id": 23,
     "Description": "Положить коврик",
     "Reward": "bathroom_6.png",
     "PriceBitcoin": 1
   },
   {
-    "Id": 25,
+    "Id": 24,
     "Description": "Купить полочку",
     "Reward": "bathroom_7.png",
     "PriceBitcoin": 1
   },
   {
-    "Id": 26,
+    "Id": 25,
     "Description": "Поставить лампу на полку",
     "Reward": "bathroom_8.png",
     "PriceBitcoin": 1
   },
   {
-    "Id": 27,
+    "Id": 26,
     "Description": "Повесить украшения на стену",
     "Reward": "bathroom_9.png",
     "PriceBitcoin": 1
   },
   {
-    "Id": 28,
+    "Id": 27,
     "Description": "Начать строительство спальни",
     "Reward": "bathroom_10.png",
+    "PriceBitcoin": 1
+  },
+  {
+    "Id": 28,
+    "Description": "Повесить шторы",
+    "Reward": "bedroom_0.png",
+    "PriceBitcoin": 1
+  },
+  {
+    "Id": 29,
+    "Description": "Повесить картину",
+    "Reward": "bedroom_1.png",
+    "PriceBitcoin": 1
+  },
+  {
+    "Id": 30,
+    "Description": "Поставить кровать с ковром, повесить зеркало",
+    "Reward": "bedroom_2.png",
+    "PriceBitcoin": 3
+  },
+  {
+    "Id": 31,
+    "Description": "Поставить тумбочку с лампой",
+    "Reward": "bedroom_3.png",
+    "PriceBitcoin": 2
+  },
+  {
+    "Id": 32,
+    "Description": "Поставить цветок",
+    "Reward": "bedroom_4.png",
+    "PriceBitcoin": 1
+  },
+  {
+    "Id": 33,
+    "Description": "Повесить люстру",
+    "Reward": "bedroom_5.png",
+    "PriceBitcoin": 1
+  },
+  {
+    "Id": 34,
+    "Description": "Поставить шкаф",
+    "Reward": "bedroom_6.png",
+    "PriceBitcoin": 1
+  },
+  {
+    "Id": 35,
+    "Description": "Поставить телевизор",
+    "Reward": "bedroom_7.png",
+    "PriceBitcoin": 1
+  },
+  { 
+    "Id": 36,
+    "Description": "Начать строительство гостинной",
+    "Reward": "bedroom_8.png",
     "PriceBitcoin": 1
   }
 ]
